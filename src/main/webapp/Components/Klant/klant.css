@@ -1,0 +1,34 @@
+/* klant.css */
+
+body {
+    background: linear-gradient(to right, #1572c7, #fff); /* Use a gradient for smooth transition */
+    transition: background 0.5s ease; /* Add a transition effect */
+}
+
+.container {
+    margin-top: 2rem;
+}
+
+.navbar {
+    margin-bottom: 1rem;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.navbar-nav {
+    align-items: center;
+}
+
+.btn-primary {
+    margin-left: 1rem;
+}
+
+.jumbotron {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 2rem;
+}
+
+/* Add more styles as needed */
