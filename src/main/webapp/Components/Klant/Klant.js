@@ -51,15 +51,17 @@ function editKlant(klantID) {
             $('#editAchternaam').val(klant.achternaam);
             $('#editEmail').val(klant.email);
             $('#editAdres').val(klant.adres);
+            $('#editKlantID').val(klant.klantID);
 
             // Display the edit modal
             $('#editKlantModal').modal('show');
 
-            // Set up a click event for the "Save Changes" button in the modal
-            $('#saveChangesBtn').off('click').on('click', function () {
-                // Call the function to save the changes
-                saveChanges(klantID);
+            // Set up a click event for the "Update" button in the modal
+            $('#editKlantModal').find('.modal-body button.btn-primary').off('click').on('click', function () {
+                // Call the function to save the changes with the correct klantID
+                saveChanges(klant.klantID);
             });
+
         },
         error: function (xhr, status, error) {
             console.error('Error fetching Klant for edit:', error);
@@ -68,8 +70,40 @@ function editKlant(klantID) {
     });
 }
 
-function saveChanges(klantID) {
+// Inside your existing JavaScript code
+function saveKlant() {
+    var newKlantData = {
+        gebruikersnaam: $('#createGebruikersnaam').val(),
+        voornaam: $('#createVoornaam').val(),
+        achternaam: $('#createAchternaam').val(),
+        email: $('#createEmail').val(),
+        adres: $('#createAdres').val()
+    };
+
+    $.ajax({
+        url: 'http://localhost:8080/cloud_war_exploded/api/klanten/save',
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(newKlantData),
+        success: function (data) {
+            console.log('Klant created successfully:', data);
+            fetchKlanten(); // Fetch and display updated Klanten data
+            $('#createKlantModal').modal('hide'); // Close the modal
+        },
+        error: function (xhr, status, error) {
+            console.error('Error creating Klant:', error);
+            console.log('XHR status:', xhr.status);
+            console.log('XHR response:', xhr.responseText);
+        }
+    });
+}
+
+// ...
+
+
+function saveChanges() {
     var updatedData = {
+        klantID: $('#editKlantID').val(), // Include the klantID
         gebruikersnaam: $('#editGebruikersnaam').val(),
         voornaam: $('#editVoornaam').val(),
         achternaam: $('#editAchternaam').val(),
@@ -78,19 +112,23 @@ function saveChanges(klantID) {
     };
 
     $.ajax({
-        url: 'http://localhost:8080/cloud_war_exploded/api/klanten/update/' + klantID,
+        url: 'http://localhost:8080/cloud_war_exploded/api/klanten/update/' + $('#editKlantID').val(),
         method: 'PUT',
         contentType: 'application/json',
         data: JSON.stringify(updatedData),
         success: function (data) {
+            console.log('Update successful:', data);
             fetchKlanten();
             $('#editKlantModal').modal('hide');
         },
         error: function (xhr, status, error) {
             console.error('Error updating Klant:', error);
+            console.log('XHR status:', xhr.status);
+            console.log('XHR response:', xhr.responseText);
         }
     });
 }
+
 
 function displayKlanten(klanten) {
     var tableBody = $('#klantenTableBody');

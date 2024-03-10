@@ -41,6 +41,21 @@ public class KlantRepository implements KlantRepositoryRP {
     }
 
     @Override
+    public Klant updateKlantById(int klantId, Klant updatedKlant) {
+        Klant existingKlant = getKlantById(klantId);
+        if (existingKlant != null) {
+            entityManager.getTransaction().begin();
+            existingKlant.setGebruikersnaam(updatedKlant.getGebruikersnaam());
+            existingKlant.setVoornaam(updatedKlant.getVoornaam());
+            existingKlant.setAchternaam(updatedKlant.getAchternaam());
+            existingKlant.setEmail(updatedKlant.getEmail());
+            existingKlant.setAdres(updatedKlant.getAdres());
+            entityManager.getTransaction().commit();
+        }
+        return existingKlant;
+    }
+
+    @Override
     public void deleteKlant(int klantId) {
         Klant klant = entityManager.find(Klant.class, klantId);
         if (klant != null) {

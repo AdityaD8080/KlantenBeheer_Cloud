@@ -1,30 +1,5 @@
 package sr.qualogy.controller;
 
-//import sr.qualogy.service.KlantService;
-//import jakarta.ws.rs.*;
-//import jakarta.ws.rs.core.MediaType;
-//import jakarta.ws.rs.core.Response;
-//import sr.qualogy.entity.Klant;
-//
-//@Path("/klant")
-//public class KlantController {
-//
-//    private final KlantService klantService;
-//
-//    public KlantController(KlantService klantService) {
-//        this.klantService = klantService;
-//    }
-//
-//    @GET
-//    @Path("/hello")
-//    @Produces(MediaType.TEXT_PLAIN)
-//    public String helloWorld() {
-//        return "Hello World";
-//    }
-//
-//    // Add other endpoints based on your requirements
-//}
-
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -82,6 +57,16 @@ public class KlantController {
         Klant updatedKlant = klantService.updateKlant(klant);
         return Response.ok(updatedKlant, MediaType.APPLICATION_JSON_TYPE).build();
     }
+
+    @PUT
+    @Path("/update/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateKlantById(@PathParam("id") int klantId, Klant updatedKlant) {
+        Klant result = klantService.updateKlantById(klantId, updatedKlant);
+        return Response.ok(result, MediaType.APPLICATION_JSON_TYPE).build();
+    }
+
 
     @DELETE
     @Path("/delete/{id}")

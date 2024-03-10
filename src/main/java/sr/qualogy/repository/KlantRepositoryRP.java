@@ -12,5 +12,7 @@ public interface KlantRepositoryRP {
 
     Klant updateKlant(Klant klant);
 
+    Klant updateKlantById(int klantId, Klant updatedKlant);
+
     void deleteKlant(int klantId);
 }

@@ -28,6 +28,10 @@ public class KlantService {
         return klantRepository.updateKlant(klant);
     }
 
+    public Klant updateKlantById(int klantId, Klant updatedKlant) {
+        return klantRepository.updateKlantById(klantId, updatedKlant);
+    }
+
     public void deleteKlant(int klantId) {
         klantRepository.deleteKlant(klantId);
     }
