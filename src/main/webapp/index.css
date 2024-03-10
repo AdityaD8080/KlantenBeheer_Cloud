@@ -1,27 +1,22 @@
 /* index.css */
 
+/* Body styles */
 body {
     background-color: #f8f9fa; /* Light gray background color */
+    color: #343a40; /* Dark text color */
 }
 
+/* Navbar styles */
 .navbar {
-    background-color: #343a40 !important; /* Dark background color for the navbar */
+    background-color: #212529 !important; /* Dark background color for the navbar */
 }
 
 .navbar-brand {
     color: #ffffff; /* White color for the navbar brand */
+    font-size: 24px; /* Adjust font size */
 }
 
-.jumbotron {
-    background-color: #ffffff; /* White background color for the jumbotron */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
-}
-
-/* Adjust margins and paddings */
-.container {
-    margin-top: 20px;
-}
-
+/* Button styles */
 .btn-info {
     background-color: #17a2b8; /* Customize button color */
     border-color: #17a2b8; /* Customize button border color */
@@ -30,4 +25,26 @@ body {
 .btn-info:hover {
     background-color: #138496; /* Change button color on hover */
     border-color: #138496; /* Change button border color on hover */
+}
+
+/* Jumbotron styles */
+.jumbotron {
+    background-color: #ffffff; /* White background color for the jumbotron */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    padding: 20px; /* Adjust padding */
+}
+
+/* Heading styles */
+.display-4 {
+    color: #343a40; /* Dark color for headings */
+}
+
+/* Paragraph styles */
+.lead {
+    color: #6c757d; /* Medium gray color for lead text */
+}
+
+/* Bootstrap container margin adjustment */
+.container {
+    margin-top: 40px; /* Adjust top margin for the container */
 }

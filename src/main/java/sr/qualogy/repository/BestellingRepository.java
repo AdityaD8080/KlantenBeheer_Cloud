@@ -5,6 +5,7 @@ import jakarta.persistence.TypedQuery;
 import sr.qualogy.entity.Bestellingen;
 
 import java.util.List;
+
 public class BestellingRepository {
 
     private EntityManager entityManager;

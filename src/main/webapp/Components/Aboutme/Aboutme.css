@@ -1,6 +1,8 @@
 body {
     background: linear-gradient(to right, #2c3e50, #3498db); /* Dark Blue to Sky Blue gradient */
     transition: background 0.5s ease; /* Add a transition effect */
+    margin: 0; /* Remove default margin to prevent unwanted spaces */
+    padding: 0; /* Remove default padding */
 }
 
 .container {
@@ -10,7 +12,6 @@ body {
 .navbar {
     margin-bottom: 1rem;
 }
-
 
 .navbar-brand {
     font-size: 1.5rem;
@@ -59,5 +60,4 @@ body {
     border-color: #c0392b; /* Dark Red */
     color: #fff;
 }
-
 

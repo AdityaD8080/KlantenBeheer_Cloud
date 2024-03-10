@@ -1,4 +1,5 @@
 package sr.qualogy.repository;
+
 import sr.qualogy.entity.Klant;
 import java.util.List;
 
