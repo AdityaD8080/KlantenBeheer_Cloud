@@ -39,14 +39,14 @@ public class BestellingItemsController {
         return bestellingItemsService.getBestellingItemById(bestellingItemId);
     }
 
-//    @POST
-//    @Path("/save")
-//    @Consumes(MediaType.APPLICATION_JSON)
-//    @Produces(MediaType.APPLICATION_JSON)
-//    public Response saveBestellingItem(BestellingItems bestellingItem) {
-//        BestellingItems savedBestellingItem = bestellingItemsService.saveBestellingItem(bestellingItem);
-//        return Response.ok(savedBestellingItem, MediaType.APPLICATION_JSON_TYPE).build();
-//    }
+    @POST
+    @Path("/save")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response saveBestellingItem(BestellingItems bestellingItem) {
+        BestellingItems savedBestellingItem = bestellingItemsService.saveBestellingItem(bestellingItem);
+        return Response.ok(savedBestellingItem, MediaType.APPLICATION_JSON_TYPE).build();
+    }
 
 
 

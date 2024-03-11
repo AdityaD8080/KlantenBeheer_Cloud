@@ -1,6 +1,7 @@
 package sr.qualogy.repository;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
 import sr.qualogy.entity.Bestellingen;
 
@@ -15,11 +16,18 @@ public class BestellingRepository {
     }
 
     public Bestellingen saveBestelling(Bestellingen bestelling) {
-        entityManager.getTransaction().begin();
-        entityManager.persist(bestelling);
-        entityManager.getTransaction().commit();
-
-        return bestelling;
+        EntityTransaction transaction = entityManager.getTransaction();
+        try {
+            transaction.begin();
+            entityManager.persist(bestelling);
+            transaction.commit();
+            return bestelling;
+        } catch (Exception e) {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            throw e; // Rethrow the exception after rollback
+        }
     }
 
     public List<Bestellingen> getAllBestellingen() {
@@ -33,33 +41,56 @@ public class BestellingRepository {
     }
 
     public Bestellingen updateBestelling(Bestellingen bestelling) {
-        entityManager.getTransaction().begin();
-        Bestellingen updatedBestelling = entityManager.merge(bestelling);
-        entityManager.getTransaction().commit();
-        return updatedBestelling;
+        EntityTransaction transaction = entityManager.getTransaction();
+        try {
+            transaction.begin();
+            Bestellingen updatedBestelling = entityManager.merge(bestelling);
+            transaction.commit();
+            return updatedBestelling;
+        } catch (Exception e) {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            throw e;
+        }
     }
 
     public Bestellingen updateBestellingById(int bestellingId, Bestellingen updatedBestelling) {
-        Bestellingen existingBestelling = getBestellingById(bestellingId);
-        if (existingBestelling != null) {
-            entityManager.getTransaction().begin();
-            existingBestelling.setKlant(updatedBestelling.getKlant());
-            existingBestelling.setBestelDatum(updatedBestelling.getBestelDatum());
-            existingBestelling.setTotaalBedrag(updatedBestelling.getTotaalBedrag());
-            existingBestelling.setVerzendadres(updatedBestelling.getVerzendadres());
-            existingBestelling.setBetaalStatus(updatedBestelling.getBetaalStatus());
-            entityManager.getTransaction().commit();
+        EntityTransaction transaction = entityManager.getTransaction();
+        try {
+            transaction.begin();
+            Bestellingen existingBestelling = getBestellingById(bestellingId);
+            if (existingBestelling != null) {
+                existingBestelling.setKlant(updatedBestelling.getKlant());
+                existingBestelling.setBestelDatum(updatedBestelling.getBestelDatum());
+                existingBestelling.setTotaalBedrag(updatedBestelling.getTotaalBedrag());
+                existingBestelling.setVerzendadres(updatedBestelling.getVerzendadres());
+                existingBestelling.setBetaalStatus(updatedBestelling.getBetaalStatus());
+            }
+            transaction.commit();
+            return existingBestelling;
+        } catch (Exception e) {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            throw e;
         }
-        return existingBestelling;
     }
 
-
     public void deleteBestelling(int bestellingId) {
-        Bestellingen bestelling = entityManager.find(Bestellingen.class, bestellingId);
-        if (bestelling != null) {
-            entityManager.getTransaction().begin();
-            entityManager.remove(bestelling);
-            entityManager.getTransaction().commit();
+        EntityTransaction transaction = entityManager.getTransaction();
+        try {
+            transaction.begin();
+            Bestellingen bestelling = entityManager.find(Bestellingen.class, bestellingId);
+            if (bestelling != null) {
+                entityManager.remove(bestelling);
+            }
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            throw e;
         }
     }
 }
