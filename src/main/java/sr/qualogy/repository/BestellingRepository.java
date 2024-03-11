@@ -8,7 +8,7 @@ import java.util.List;
 
 public class BestellingRepository {
 
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
     public BestellingRepository(EntityManager entityManager) {
         this.entityManager = entityManager;
@@ -38,6 +38,21 @@ public class BestellingRepository {
         entityManager.getTransaction().commit();
         return updatedBestelling;
     }
+
+    public Bestellingen updateBestellingById(int bestellingId, Bestellingen updatedBestelling) {
+        Bestellingen existingBestelling = getBestellingById(bestellingId);
+        if (existingBestelling != null) {
+            entityManager.getTransaction().begin();
+            existingBestelling.setKlant(updatedBestelling.getKlant());
+            existingBestelling.setBestelDatum(updatedBestelling.getBestelDatum());
+            existingBestelling.setTotaalBedrag(updatedBestelling.getTotaalBedrag());
+            existingBestelling.setVerzendadres(updatedBestelling.getVerzendadres());
+            existingBestelling.setBetaalStatus(updatedBestelling.getBetaalStatus());
+            entityManager.getTransaction().commit();
+        }
+        return existingBestelling;
+    }
+
 
     public void deleteBestelling(int bestellingId) {
         Bestellingen bestelling = entityManager.find(Bestellingen.class, bestellingId);

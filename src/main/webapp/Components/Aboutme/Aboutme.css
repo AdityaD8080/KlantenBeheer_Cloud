@@ -61,3 +61,125 @@ body {
     color: #fff;
 }
 
+/* Container for the profile card */
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: transparent;
+}
+
+/* Profile card styles */
+.profile {
+    position: relative;
+    width: 300px;
+    height: 350px;
+    background: url("Aboutme_Images/star_bg.jpg");
+    background-size: cover;
+    cursor: pointer;
+    border: 12px;
+    border-top-right-radius: 35px !important;
+    border-radius: 6px;
+}
+
+/* Overlay styles */
+.overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 12px;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 1s;
+    border-top-right-radius: 35px !important;
+    border-radius: 35px;
+}
+
+/* Show overlay on hover */
+.profile:hover .overlay {
+    opacity: 1;
+}
+
+/* Social icons styles */
+.social-icons {
+    display: flex;
+    list-style: none;
+    bottom: 10px;
+    position: absolute;
+    text-align: center;
+    justify-content: center;
+    left: 22px;
+}
+
+.social-icons li {
+    width: 25px;
+    height: 25px;
+    border: 1px solid #eee;
+    padding: 20px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-radius: 5px;
+    transition: all 1s;
+}
+
+/* Change style on hover */
+.social-icons li:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* About section within the overlay */
+.overlay .about {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    top: 40%;
+    color: #fff;
+    flex-direction: column; /* Corrected property name */
+}
+
+/* Container for the profile card */
+.wrapper {
+    display: flex;
+    justify-content: flex-start; /* Move content to the left */
+    align-items: flex-start; /* Move content to the top */
+    height: 100vh;
+    background: transparent;
+}
+
+/* Profile card styles */
+.profile {
+    position: relative;
+    width: 300px;
+    height: 350px;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8)), url("Aboutme_Images/star_bg.jpg");
+    background-size: cover;
+    cursor: pointer;
+    border: 12px;
+    border-radius: 35px !important; /* Round all edges */
+}
+
+.nav-link {
+    font-size: 28px; /* Adjust the size as needed */
+}
+
+/* Stijl voor de "About Me" tekstcontainer */
+.text-container {
+    margin-top: 2rem;
+    padding: 2rem; /* Grotere padding voor meer witruimte rond de tekst */
+    color: #fff;
+    background-color: transparent;
+    border-radius: 10px; /* Iets grotere afronding van de hoeken */
+    font-size: 1.1rem; /* Iets grotere lettergrootte voor betere leesbaarheid */
+    line-height: 1.6; /* Verhoog de regelhoogte voor een betere leesbaarheid */
+}
+
+
+
+
+

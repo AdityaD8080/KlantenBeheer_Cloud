@@ -56,6 +56,19 @@ public class BestellingController {
         return Response.ok(updatedBestelling, MediaType.APPLICATION_JSON_TYPE).build();
     }
 
+    @PUT
+    @Path("/update/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateBestellingById(@PathParam("id") int bestellingId, Bestellingen updatedBestelling) {
+        Bestellingen result = bestellingService.updateBestellingById(bestellingId, updatedBestelling);
+        if (result != null) {
+            return Response.ok(result, MediaType.APPLICATION_JSON_TYPE).build();
+        } else {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+    }
+
     @DELETE
     @Path("/delete/{id}")
     public void deleteBestelling(@PathParam("id") int bestellingId) {

@@ -1,50 +1,84 @@
-/* index.css */
-
-/* Body styles */
 body {
-    background-color: #f8f9fa; /* Light gray background color */
-    color: #343a40; /* Dark text color */
+    background: linear-gradient(to right, #2c3e50, #3498db);
+    transition: background 0.5s ease;
 }
 
-/* Navbar styles */
+.container {
+    margin-top: 2rem;
+}
+
 .navbar {
-    background-color: #212529 !important; /* Dark background color for the navbar */
+    margin-bottom: 1rem;
+    height: 80px;
 }
 
 .navbar-brand {
-    color: #ffffff; /* White color for the navbar brand */
-    font-size: 24px; /* Adjust font size */
+    font-size: 1.5rem;
 }
 
-/* Button styles */
-.btn-info {
-    background-color: #17a2b8; /* Customize button color */
-    border-color: #17a2b8; /* Customize button border color */
+.btn-primary {
+    margin-left: 1rem;
 }
 
-.btn-info:hover {
-    background-color: #138496; /* Change button color on hover */
-    border-color: #138496; /* Change button border color on hover */
+/* Add the following styles to match the navbar in klant.css */
+.navbar-dark .navbar-toggler-icon {
+    background-color: #fff;
 }
 
-/* Jumbotron styles */
-.jumbotron {
-    background-color: #ffffff; /* White background color for the jumbotron */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
-    padding: 20px; /* Adjust padding */
+.navbar-dark .navbar-toggler {
+    border-color: #fff;
 }
 
-/* Heading styles */
-.display-4 {
-    color: #343a40; /* Dark color for headings */
+.navbar-dark .navbar-toggler:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Paragraph styles */
-.lead {
-    color: #6c757d; /* Medium gray color for lead text */
+/* Adjust the color and hover styles for nav links */
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
 }
 
-/* Bootstrap container margin adjustment */
-.container {
-    margin-top: 40px; /* Adjust top margin for the container */
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: rgba(255, 255, 255, 0.7);
 }
+
+.table {
+    background-color: #34495e;
+}
+
+.table th,
+.table td {
+    border: none;
+    color: #fff;
+}
+
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th {
+    background-color: #2c3e50;
+}
+
+.modal-content {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-title {
+    color: #fff;
+}
+
+.btn-success {
+    background-color: #2ecc71;
+    border-color: #27ae60;
+    color: #fff;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    border-color: #c0392b;
+    color: #fff;
+}
+
