@@ -97,10 +97,14 @@ function saveBestelling() {
     });
 }
 
-function saveChangesBestelling() {
+function saveChangesBestelling(bestellingID) {
     var updatedData = {
-        // Adjust the properties based on your Bestellingen model
-        // Include relevant form field values
+        klantID: $('#editKlantID').val(), // Include the klantID
+        bestelDatum: $('#editBestellingDatum').val(),
+        totaalBedrag: $('#editTotaalBedrag').val(),
+        verzendadres: $('#editVerzendadres').val(),
+        betaalStatus: $('#editBetaalStatus').val()
+        // Add more properties as needed based on your Bestellingen entity
     };
 
     $.ajax({
@@ -120,34 +124,6 @@ function saveChangesBestelling() {
         }
     });
 }
-
-// Fetch Klanten and populate the dropdown
-function fetchKlantenForDropdown() {
-    $.ajax({
-        url: 'http://localhost:8080/cloud_war_exploded/api/klanten/all',
-        method: 'GET',
-        dataType: 'json',
-        success: function (klanten) {
-            // Clear existing options
-            $('#createKlantID').empty();
-
-            // Add a default option
-            $('#createKlantID').append('<option value="" disabled selected>Select Klant</option>');
-
-            // Populate the dropdown with Klanten
-            klanten.forEach(function (klant) {
-                $('#createKlantID').append('<option value="' + klant.klantID + '">' + klant.gebruikersnaam + '</option>');
-            });
-        },
-        error: function (xhr, status, error) {
-            console.error('Error fetching Klanten for dropdown:', error);
-        }
-    });
-}
-
-// Call the function to fetch Klanten and populate the dropdown
-fetchKlantenForDropdown();
-
 
 function displayBestellingen(bestellingen) {
     var tableBody = $('#bestellingenTableBody');

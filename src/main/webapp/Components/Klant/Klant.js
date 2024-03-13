@@ -32,11 +32,17 @@ function deleteKlant(klantID) {
                 fetchKlanten();
             },
             error: function (xhr, status, error) {
-                console.error('Error deleting Klant:', error);
+                if (xhr.status === 500) {
+                    console.error('Error deleting Klant:', error);
+                    alert('This Klant is referenced in another table and cannot be deleted.');
+                } else {
+                    console.error('Unexpected error:', error);
+                }
             }
         });
     });
 }
+
 
 function editKlant(klantID) {
     // Fetch the existing Klant information

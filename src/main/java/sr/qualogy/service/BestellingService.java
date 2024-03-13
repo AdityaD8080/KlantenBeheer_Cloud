@@ -45,7 +45,7 @@ import sr.qualogy.repository.BestellingRepository;
 import sr.qualogy.entity.Bestellingen;
 import java.util.List;
 
-public class BestellingService {
+public class BestellingService implements BestellingenIMPL {
 
     private final BestellingRepository bestellingRepository;
 

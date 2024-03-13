@@ -2,6 +2,7 @@ package sr.qualogy.repository;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.RollbackException;
 import jakarta.persistence.TypedQuery;
 import sr.qualogy.entity.Bestellingen;
 
@@ -93,4 +94,5 @@ public class BestellingRepository {
             throw e;
         }
     }
+
 }

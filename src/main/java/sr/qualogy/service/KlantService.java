@@ -7,7 +7,7 @@ import java.util.List;
 
 public class KlantService {
 
-    private final KlantRepository klantRepository;
+    public final KlantRepository klantRepository;
 
     public KlantService() {
         this.klantRepository = new KlantRepository(JPAConfiguration.getEntityManager());
@@ -20,7 +20,7 @@ public class KlantService {
         return klantRepository.getKlantById(klantId);
     }
 
-    public Klant saveKlant(Klant klant) {
+    public  Klant saveKlant(Klant klant) {
         return klantRepository.saveKlant(klant);
     }
 

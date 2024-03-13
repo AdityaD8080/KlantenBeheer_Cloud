@@ -5,7 +5,9 @@ body {
 
 .container {
     margin-top: 2rem;
+    background-color: transparent;
 }
+
 
 .navbar {
     margin-bottom: 1rem;

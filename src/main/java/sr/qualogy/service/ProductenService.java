@@ -43,15 +43,12 @@ public class ProductenService {
 
     private final ProductenRepository productenRepository;
 
-    // Private static instance variable
     private static ProductenService instance;
 
-    // Private constructor to enforce singleton pattern
     private ProductenService() {
         this.productenRepository = new ProductenRepository(JPAConfiguration.getEntityManager());
     }
 
-    // Public method to get the instance of the singleton class
     public static ProductenService getInstance() {
         if (instance == null) {
             synchronized (ProductenService.class) {

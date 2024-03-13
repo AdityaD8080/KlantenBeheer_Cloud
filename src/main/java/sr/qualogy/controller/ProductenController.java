@@ -75,7 +75,6 @@ import java.util.List;
 @Path("/producten")
 public class ProductenController {
 
-    // Use getInstance() to get the singleton instance of ProductenService
     private final ProductenService productenService = ProductenService.getInstance();
 
     @GET
